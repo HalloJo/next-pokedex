@@ -1,0 +1,11 @@
+.logo {
+  fill: var(--color-white);
+  width: 100px;
+  animation: turn 15s infinite 2s;
+}
+
+@keyframes turn {
+  100% {
+    transform: rotate(360deg);
+  }
+}
