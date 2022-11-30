@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import Link from "next/link";
 import Layout from "../components/Layout/Layout";
 import Logo from "../components/Logo/Logo";
 import styles from "../styles/Home.module.scss";
@@ -9,6 +9,21 @@ export default function Home({ pokemon }) {
     <Layout title="The Next Pokedex">
       <Logo />
       <h1 className={styles.title}>The Next Pokedex.</h1>
+      <ul className={styles.list}>
+        {pokemon.map((monster, index) => (
+          <li className={styles.card} key={index}>
+            <Link href={`/pokemon?id=${index + 1}`}>
+              <img
+                className={styles.cardImage}
+                src={monster.image}
+                alt={monster.name}
+              />
+              <span>#{index}</span>
+              {monster.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </Layout>
   );
 }

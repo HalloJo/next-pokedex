@@ -1,1 +1,19 @@
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 15px;
 
+  list-style-type: none;
+  padding: 2rem;
+  margin: 0;
+}
+
+.card {
+  background-color: pink;
+}
+
+.cardImage {
+  display: block;
+  width: 100%;
+}
