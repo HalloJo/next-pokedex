@@ -6,6 +6,36 @@
   width: 100%;
 }
 
+.buttons {
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+
+  @media (min-width: 1024px) {
+    padding: 1rem;
+  }
+
+  .button {
+    padding: 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--color-dark-black);
+    transition: all 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--color-white);
+      color: var(--color-dark-black);
+    }
+  }
+  .disabled {
+    opacity: 0.2;
+    pointer-events: none;
+  }
+}
+
 .list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -15,6 +45,7 @@
   list-style-type: none;
   padding: 1rem;
   margin: 0;
+  width: 100%;
 
   @media (min-width: 1024px) {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;

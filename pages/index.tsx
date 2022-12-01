@@ -8,8 +8,16 @@ import styles from "../styles/Home.module.scss";
 
 export default function Home({ initialPokemon }: InitialPokemonProps) {
   const [pokemon, setPokemon] = useState(initialPokemon);
+  const [pokemonOffset, setPokemonOffset] = useState(0);
 
   console.log(initialPokemon);
+
+  const fetchPokemon = async (url: string, next: boolean) => {
+    const response = await fetch(url);
+    const nextPokemon = await response.json();
+    setPokemon(nextPokemon);
+    setPokemonOffset(next ? pokemonOffset + 20 : pokemonOffset - 20);
+  };
 
   return (
     <Layout title="The Next Pokedex">
@@ -17,11 +25,34 @@ export default function Home({ initialPokemon }: InitialPokemonProps) {
         <Logo />
         <h1 className={styles.title}>The Next Pokedex</h1>
       </div>
+      <div className={styles.buttons}>
+        <button
+          onClick={() => fetchPokemon(pokemon.previous, false)}
+          className={`${styles.button} ${
+            !pokemon.previous ? styles.disabled : null
+          }`}
+        >
+          &larr;
+        </button>
+        <button
+          onClick={() => fetchPokemon(pokemon.next, true)}
+          className={`${styles.button} ${
+            !pokemon.next ? styles.disabled : null
+          }`}
+        >
+          &rarr;
+        </button>
+      </div>
       <ul className={styles.list}>
         {pokemon.results.map((monster, index) => (
-          <Pokemon key={index} monster={monster} index={index} />
+          <Pokemon
+            key={index}
+            monster={monster}
+            index={index + pokemonOffset}
+          />
         ))}
       </ul>
+
       {/* <ul className={styles.list}>
         {pokemon.map((monster, index) => (
           <li className={styles.card} key={index}>

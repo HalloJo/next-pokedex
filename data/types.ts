@@ -18,7 +18,8 @@
 
 export type InitialPokemonProps = {
     initialPokemon: {
-        previous?: string,
+        previous: string,
+        next: string,
         results: SinglePokemon[]
     }
 }
@@ -32,3 +33,4 @@ export type SinglePokemon = {
     index: number;
     monster: SinglePokemon;
   };
+

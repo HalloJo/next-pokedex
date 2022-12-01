@@ -1,8 +1,10 @@
 import Image from "next/image";
+import { useState } from "react";
 import { PokemonProps } from "../../data/types";
 import styles from "../Pokemon/Pokemon.module.scss";
 
 const Pokemon = ({ monster, index }: PokemonProps) => {
+  const [imageError, setImageError] = useState(false);
   const monsterIndex = ("000" + (index + 1)).slice(-3);
 
   return (
@@ -19,7 +21,12 @@ const Pokemon = ({ monster, index }: PokemonProps) => {
         alt={monster.name}
         width={125}
         height={125}
-        src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${monsterIndex}.png`}
+        src={
+          !imageError
+            ? `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${monsterIndex}.png`
+            : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/769px-Pokebola-pokeball-png-0.png"
+        }
+        onError={() => setImageError(true)}
         priority
       />
     </li>
