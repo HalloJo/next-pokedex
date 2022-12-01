@@ -1,12 +1,24 @@
+.header {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
 .list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   column-gap: 10px;
   row-gap: 15px;
 
   list-style-type: none;
-  padding: 2rem;
+  padding: 1rem;
   margin: 0;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
 }
 
 .card {

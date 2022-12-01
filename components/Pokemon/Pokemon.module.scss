@@ -1,0 +1,29 @@
+.pokemon {
+  background-color: var(--color-dark-black);
+  padding: 1rem;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 0 1rem 0;
+  }
+
+  &__number {
+    opacity: 0.15;
+  }
+
+  &__name {
+    text-transform: capitalize;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1;
+  }
+}
