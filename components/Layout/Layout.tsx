@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { ReactNode } from "react";
 import styles from "../Layout/Layout.module.scss";
+import Logo from "../Logo/Logo";
 
 type LayoutProps = {
   title: string;
@@ -18,6 +19,10 @@ const Layout = ({ title, children }: LayoutProps) => {
         />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
+      <header className={styles.header}>
+        <Logo />
+        <h1 className={styles.title}>The Next Pokedex</h1>
+      </header>
       <main className={styles.main}>{children}</main>
     </div>
   );

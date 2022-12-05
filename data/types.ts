@@ -1,21 +1,3 @@
-// export type PokemonItem = {
-//     image: string;
-//     name: string;
-//     url: string;
-//   };
-
-// export type PokemonProps = {
-//     pokemon: PokemonItem[];
-//   };
-
-// export type DataResultProps = {
-//   result: {
-//     image: string;
-//     name: string;
-//     url: string;
-//   };
-// };
-
 export type InitialPokemonProps = {
     initialPokemon: {
         previous: string,
@@ -29,8 +11,22 @@ export type SinglePokemon = {
         url: string;
   };
   
-  export type PokemonProps = {
-    index: number;
-    monster: SinglePokemon;
-  };
+export type PokemonProps = {
+  index: number;
+  monster: SinglePokemon;
+};
 
+export type PokemonType = {
+  slot: number
+  type: {
+    name: string;
+  }
+}
+
+export type PokemonPageProps = {
+  pokemonPageData: {
+    name: string;
+    id: number;
+    types: PokemonType[]
+  }
+}

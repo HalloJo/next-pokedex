@@ -1,7 +1,6 @@
-import Link from "next/link";
+import { GetStaticProps } from "next";
 import { useState } from "react";
 import Layout from "../components/Layout/Layout";
-import Logo from "../components/Logo/Logo";
 import Pokemon from "../components/Pokemon/Pokemon";
 import { InitialPokemonProps } from "../data/types";
 import styles from "../styles/Home.module.scss";
@@ -10,7 +9,7 @@ export default function Home({ initialPokemon }: InitialPokemonProps) {
   const [pokemon, setPokemon] = useState(initialPokemon);
   const [pokemonOffset, setPokemonOffset] = useState(0);
 
-  console.log(initialPokemon);
+  // console.log(initialPokemon);
 
   const fetchPokemon = async (url: string, next: boolean) => {
     const response = await fetch(url);
@@ -21,10 +20,6 @@ export default function Home({ initialPokemon }: InitialPokemonProps) {
 
   return (
     <Layout title="The Next Pokedex">
-      <div className={styles.header}>
-        <Logo />
-        <h1 className={styles.title}>The Next Pokedex</h1>
-      </div>
       <div className={styles.buttons}>
         <button
           onClick={() => fetchPokemon(pokemon.previous, false)}
@@ -52,27 +47,11 @@ export default function Home({ initialPokemon }: InitialPokemonProps) {
           />
         ))}
       </ul>
-
-      {/* <ul className={styles.list}>
-        {pokemon.map((monster, index) => (
-          <li className={styles.card} key={index}>
-            <Link href={`/pokemon?id=${index + 1}`}>
-              <img
-                className={styles.cardImage}
-                src={monster.image}
-                alt={monster.name}
-              />
-              <span>#{index + 1}</span>
-              {monster.name}
-            </Link>
-          </li>
-        ))}
-      </ul> */}
     </Layout>
   );
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const response = await fetch("https://pokeapi.co/api/v2/pokemon");
   const initialPokemon = await response.json();
 
