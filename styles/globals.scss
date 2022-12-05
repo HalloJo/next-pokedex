@@ -27,6 +27,70 @@ h1 {
   font-size: 1.5rem;
 }
 
+// TYPES
+
+.grass {
+  background-color: green;
+}
+.poison {
+  background-color: purple;
+}
+.fire {
+  background-color: red;
+}
+.water {
+  background-color: blue;
+}
+.fighting {
+  background-color: brown;
+}
+.ground {
+  background-color: sandybrown;
+}
+.dark {
+  background-color: rgb(38, 38, 38);
+}
+.ghost {
+  background-color: rgb(56, 29, 107);
+}
+.steel {
+  background-color: rgb(167, 167, 167);
+}
+.fairy {
+  background-color: rgb(232, 162, 233);
+  // color: var(--color-dark-black);
+}
+.dragon {
+  background-color: rgb(38, 38, 112);
+}
+.rock {
+  background-color: rgb(228, 184, 152);
+  color: var(--color-dark-black);
+}
+.bug {
+  background-color: rgb(142, 210, 47);
+  color: var(--color-dark-black);
+}
+.psychic {
+  background-color: rgb(201, 83, 169);
+}
+.flying {
+  background-color: lightblue;
+  color: var(--color-dark-black);
+}
+.ice {
+  background-color: rgb(15, 217, 232);
+  color: var(--color-dark-black);
+}
+.electric {
+  background-color: yellow;
+  color: var(--color-dark-black);
+}
+.normal {
+  background-color: white;
+  color: var(--color-dark-black);
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

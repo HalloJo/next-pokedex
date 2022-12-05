@@ -8,7 +8,9 @@ export type InitialPokemonProps = {
 
 export type SinglePokemon = {
         name: string;
-        url: string;
+        url: {
+          types: PokemonType[]
+        }
   };
   
 export type PokemonProps = {
@@ -30,3 +32,43 @@ export type PokemonPageProps = {
     types: PokemonType[]
   }
 }
+
+type getBackgroundProps = (value: string) => void;
+
+export const getBackgroundColor: getBackgroundProps = (pokemonType: string) => {
+  return pokemonType === "grass"
+    ? "grass"
+    : pokemonType === "fire"
+    ? "fire"
+    : pokemonType === "water"
+    ? "water"
+    : pokemonType === "poison"
+    ? "poison"
+    : pokemonType === "electric"
+    ? "electric"
+    : pokemonType === "ice"
+    ? "ice"
+    : pokemonType === "fighting"
+    ? "fighting"
+    : pokemonType === "ground"
+    ? "ground"
+    : pokemonType === "flying"
+    ? "flying"
+    : pokemonType === "psychic"
+    ? "psychic"
+    : pokemonType === "bug"
+    ? "bug"
+    : pokemonType === "rock"
+    ? "rock"
+    : pokemonType === "ghost"
+    ? "ghost"
+    : pokemonType === "dark"
+    ? "dark"
+    : pokemonType === "dragon"
+    ? "dragon"
+    : pokemonType === "steel"
+    ? "steel"
+    : pokemonType === "fairy"
+    ? "fairy"
+    : "normal";
+};

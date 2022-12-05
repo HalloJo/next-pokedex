@@ -16,7 +16,6 @@ const Pokemon = ({ monster, index }: PokemonProps) => {
             <p className={styles.pokemon__name}>{monster.name}</p>
             <span className={styles.pokemon__number}>#{monsterIndex}</span>
           </div>
-          <div className={styles.typeWrapper}>🥦</div>
         </div>
         <Image
           className={styles.pokemon__image}

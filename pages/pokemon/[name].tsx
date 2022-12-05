@@ -1,11 +1,10 @@
 import { GetServerSideProps } from "next";
 import Layout from "../../components/Layout/Layout";
 import Link from "next/link";
-import { PokemonPageProps } from "../../data/types";
+import { getBackgroundColor, PokemonPageProps } from "../../data/types";
 import Image from "next/image";
 import styles from "styles/Page.module.scss";
 import { useState } from "react";
-
 const PokemonPage = ({ pokemonPageData }: PokemonPageProps) => {
   console.log(pokemonPageData);
   const [imageError, setImageError] = useState(false);
@@ -14,7 +13,7 @@ const PokemonPage = ({ pokemonPageData }: PokemonPageProps) => {
   return (
     <Layout title={pokemonPageData.name}>
       <div className={styles.page}>
-        <Link href="/">
+        <Link href="..">
           <button className={styles.page__link}>&larr;</button>
         </Link>
         <div className={styles.page__imageWrapper}>
@@ -33,14 +32,21 @@ const PokemonPage = ({ pokemonPageData }: PokemonPageProps) => {
           />
           <div className={styles.page__info}>
             <p className={styles.page__name}>{pokemonPageData.name}</p>
+            <ul className={styles.page__typesList}>
+              {pokemonPageData.types.map((type) => (
+                <li
+                  key={type.slot}
+                  className={`${styles.page__typeItem} ${getBackgroundColor(
+                    type.type.name
+                  )}`}
+                >
+                  {type.type.name}
+                </li>
+              ))}
+            </ul>
           </div>
           <p className={styles.page__index}>#{monsterIndex}</p>
         </div>
-        {/* {pokemonPageData.types.map((type) => {
-          <div>
-            <p>{type.slot}</p>;<p>{type.type.name}</p>;
-          </div>;
-        })} */}
       </div>
     </Layout>
   );
