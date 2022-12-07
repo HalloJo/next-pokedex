@@ -4,6 +4,7 @@ import Layout from "../components/Layout/Layout";
 import Pokemon from "../components/Pokemon/Pokemon";
 import { InitialPokemonProps } from "../data/types";
 import styles from "../styles/Home.module.scss";
+import { motion as m, Variants } from "framer-motion";
 
 export default function Home({ initialPokemon }: InitialPokemonProps) {
   const [pokemon, setPokemon] = useState(initialPokemon);
@@ -14,6 +15,19 @@ export default function Home({ initialPokemon }: InitialPokemonProps) {
     const nextPokemon = await response.json();
     setPokemon(nextPokemon);
     setPokemonOffset(next ? pokemonOffset + 20 : pokemonOffset - 20);
+  };
+
+  const cardItem: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        staggerChildren: 0.1,
+        // delayChildren: 1,
+        duration: 0.3,
+      },
+    },
   };
 
   return (
@@ -36,15 +50,22 @@ export default function Home({ initialPokemon }: InitialPokemonProps) {
           &rarr;
         </button>
       </div>
-      <ul className={styles.list}>
+      <m.ul
+        initial="hidden"
+        whileInView="visible"
+        variants={cardItem}
+        className={styles.list}
+      >
         {pokemon.results.map((monster, index) => (
-          <Pokemon
-            key={index}
-            monster={monster}
-            index={index + pokemonOffset}
-          />
+          <m.div key={index} variants={cardItem}>
+            <Pokemon
+              key={index}
+              monster={monster}
+              index={index + pokemonOffset}
+            />
+          </m.div>
         ))}
-      </ul>
+      </m.ul>
     </Layout>
   );
 }
