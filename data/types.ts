@@ -32,12 +32,22 @@ export type PokemonStats = {
   }
 }
 
+export type PokemonWeakness = {
+  name: string
+}
+
 export type PokemonPageProps = {
   pokemonPageData: {
     name: string;
     id: number;
     types: PokemonType[]
     stats: PokemonStats[]
+  }
+  pokemonWeaknessData: {
+    name: string;
+    damage_relations: {
+      double_damage_from: PokemonWeakness[]
+    }
   }
 }
 

@@ -5,8 +5,13 @@ import { getBackgroundColor, PokemonPageProps } from "../../data/types";
 import Image from "next/image";
 import styles from "styles/Page.module.scss";
 import { useState } from "react";
-const PokemonPage = ({ pokemonPageData }: PokemonPageProps) => {
+
+const PokemonPage = ({
+  pokemonPageData,
+  pokemonWeaknessData,
+}: PokemonPageProps) => {
   console.log(pokemonPageData);
+
   const [imageError, setImageError] = useState(false);
   const monsterIndex = ("000" + pokemonPageData.id).slice(-3);
 
@@ -68,6 +73,47 @@ const PokemonPage = ({ pokemonPageData }: PokemonPageProps) => {
 export default PokemonPage;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  //   const [pokemonPageDataResponse, pokemonWeaknessDataResponse] =
+  //     await Promise.all([
+  //       fetch(`https://pokeapi.co/api/v2/pokemon/${context.query.name}`),
+  //       fetch(`https://pokeapi.co/api/v2/type/${context.query.name}`),
+  //     ]);
+
+  //   const [pokemonPageData, pokemonWeaknessData] = await Promise.all([
+  //     pokemonPageDataResponse.json(),
+  //     pokemonWeaknessDataResponse.json(),
+  //   ]);
+
+  //   return {
+  //     props: {
+  //       pokemonPageData,
+  //       pokemonWeaknessData,
+  //     },
+  //   };
+
+  // const pokemonPageRequest = await fetch(
+  //   `https://pokeapi.co/api/v2/pokemon/${context.query.name}`,
+  //   { headers: { "Content-Type": "application/json" } }
+  // );
+  // const pokemonWeaknessRequest = await fetch(
+  //   `https://pokeapi.co/api/v2/type/${context.query.name}`,
+  //   { headers: { "Content-Type": "application/json" } }
+  // );
+
+  // const pokemonPageData = await pokemonPageRequest.json();
+  // const pokemonWeaknessData = await pokemonWeaknessRequest.json();
+
+  // return {
+  //   props: { pokemonPageData, pokemonWeaknessData },
+  // };
+
+  // const response = await fetch(`https://pokeapi.co/api/v2/type/3`);
+  // const pokemonWeaknessData = await response.json();
+
+  // return {
+  //   props: { pokemonWeaknessData },
+  // };
+
   const response = await fetch(
     `https://pokeapi.co/api/v2/pokemon/${context.query.name}`
   );

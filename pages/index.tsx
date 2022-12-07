@@ -59,27 +59,3 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   };
 };
-
-// export const getStaticProps = async () => {
-//   try {
-//     const response = await fetch("https://pokeapi.co/api/v2/pokemon");
-//     const { results } = await response.json();
-//     const pokemon: DataResultProps[] = results.map(
-//       (result: DataResultProps, index: number) => {
-//         const tweakedId = ("00" + (index + 1)).slice(-3);
-//         const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${tweakedId}.png`;
-
-//         return {
-//           ...result,
-//           image,
-//         };
-//       }
-//     );
-
-//     return {
-//       props: { pokemon },
-//     };
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
