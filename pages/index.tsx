@@ -9,8 +9,6 @@ export default function Home({ initialPokemon }: InitialPokemonProps) {
   const [pokemon, setPokemon] = useState(initialPokemon);
   const [pokemonOffset, setPokemonOffset] = useState(0);
 
-  // console.log(initialPokemon);
-
   const fetchPokemon = async (url: string, next: boolean) => {
     const response = await fetch(url);
     const nextPokemon = await response.json();

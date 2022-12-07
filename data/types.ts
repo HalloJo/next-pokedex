@@ -25,11 +25,19 @@ export type PokemonType = {
   }
 }
 
+export type PokemonStats = {
+  base_stat: string;
+  stat: {
+    name: string;
+  }
+}
+
 export type PokemonPageProps = {
   pokemonPageData: {
     name: string;
     id: number;
     types: PokemonType[]
+    stats: PokemonStats[]
   }
 }
 

@@ -44,6 +44,19 @@ const PokemonPage = ({ pokemonPageData }: PokemonPageProps) => {
                 </li>
               ))}
             </ul>
+            <ul className={styles.page__statsList}>
+              <h3 className={styles.page__statsTitle}>Stats</h3>
+              {pokemonPageData.stats.map((stat, index) => (
+                <div key={index} className={styles.page__statsWrapper}>
+                  <div
+                    className={styles.page__stat}
+                    style={{ width: `${stat.base_stat}%` }}
+                  >
+                    {stat.base_stat}
+                  </div>
+                </div>
+              ))}
+            </ul>
           </div>
           <p className={styles.page__index}>#{monsterIndex}</p>
         </div>
