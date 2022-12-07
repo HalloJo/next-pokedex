@@ -21,7 +21,7 @@ const Pokemon = ({ monster, index }: PokemonProps) => {
       },
     },
     imageHover: {
-      x: 5,
+      y: -10,
       transition: {
         duration: 0.5,
         type: "spring",
